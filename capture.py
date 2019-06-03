@@ -24,6 +24,7 @@ def main() :
 
     while(True):
         ret, frame = cap.read()
+        cv.imshow("img", frame)
 
         if (args.mode == 'press') :
             k = cv2.waitKey(0)
