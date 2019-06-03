@@ -23,20 +23,21 @@ def main() :
         cap = cv2.VideoCapture(0)
 
     while(True):
-        ret, frame = cap.read()
-        cv.imshow("img", frame)
+        _, frame = cap.read()
+        cv2.imshow("img", frame)
 
         if (args.mode == 'press') :
-            k = cv2.waitKey(0)
+            k = cv2.waitKey(1)
             if k == 66 or k == 99:  # C or c
-                cv2.imwrite('dir%(i)', frame)
+                cv2.imwrite(dir%(i), frame)
                 i += 1
 
-        if cv2.waitKey(1) & 0xFF == ord('q'):
+        if k ==  27:
             break
 
     cap.release()
     cv2.destroyAllWindows()
 
-
+if "__main__":
+    main()
 
