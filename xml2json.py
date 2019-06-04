@@ -18,9 +18,9 @@ def main():
         print ("pls assign the root dir for input xml file.")
         return
     
-    # if args.json == '':
-    #     print ("pls assign the file name for output json file.")
-    #     return
+    if args.json == '':
+        print ("pls assign the file name for output json file.")
+        return
     
     xml_list = []
     for _, _, f in os.walk(args.xml):
@@ -89,14 +89,65 @@ def main():
 
         img_boxes.append(bboxes)
         img_area.append(area)
-    
-    # print ("dsfdjkkfljdskfjskdf")
-    # print (img_dir)
-    # print (img_filename)
-    # print (img_boxes)
-    # print (img_area)
 
-    
+    json_data = {}
+    json_data["annotations"] = []
+    json_data["categories"] = []
+    json_data["images"] = []
+
+    json_data["categories"].append({
+        "id": 0,
+        "name": "bg",
+        "supercategory": ""
+    })
+    json_data["categories"].append({
+        "id": 1,
+        "name": "remote_car",
+        "supercategory": ""
+    })
+
+    ID = 0
+
+    null = None
+    false = False
+
+    for i, _data in enumerate(img_area):
+        for j, area in enumerate(_data):
+            json_data["annotations"].append({
+                "area": area,
+                "attributes": {},
+                "bbox": [
+                    img_boxes[i][j][0],
+                    img_boxes[i][j][1],
+                    img_boxes[i][j][2],
+                    img_boxes[i][j][3]
+                ],
+                "category_id": 1,
+                "id": ID,
+                "image_id": i,
+                "is_occluded": false,
+                "iscrowd": 0,
+                "segmentation": null
+            })
+
+            ID += 1
+
+        json_data["images"].append({
+            "coco_url": null,
+            "dataset": "globalme",
+            "date_captured": null,
+            "file_name": img_filename[i],
+            "flickr_url": null,
+            "height": 360,
+            "id": i,
+            "image": img_dir[i],
+            "license": null,
+            "width": 640
+        })   
+    import json
+    with open(args.json, 'w') as outputfile:
+        json.dump(json_data, outputfile, indent=4) 
+        # indent = 4 to make python pretty pring json
 
 if "__main__":
     main()
