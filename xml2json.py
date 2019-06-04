@@ -140,7 +140,7 @@ def main():
             "flickr_url": null,
             "height": 360,
             "id": i,
-            "image": img_dir[i],
+            "image": args.xml + img_filename[i],
             "license": null,
             "width": 640
         })   
