@@ -14,7 +14,7 @@ def parsing():
 def main() :
     args = parsing().parse_args()
 
-    dir = './data/%04d.jpg'
+    dir = './data/img/%04d.jpg'
     i = 0
 
     if (args.device == 'ipcam') :
