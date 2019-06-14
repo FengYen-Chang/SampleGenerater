@@ -4,7 +4,7 @@ This project it for user to collect the image data via camera and transfer the a
 ### How to use
 In this repository, provide two application `capture.py` and `xml2json.py` for users. 
 
-##### - `capture.py`
+#### - `capture.py`
 The `capture.py` can let user to using the webcam or ip-cam to collect to image data into ./data/img file. 
 
 ###### Usage:
@@ -18,7 +18,7 @@ The `capture.py` can let user to using the webcam or ip-cam to collect to image 
 python capture.py -m $MODE -d $DEVICE
 ```
 
-##### - `xml2json.py`
+#### - `xml2json.py`
 The `xml2json.py` is for convert the annotation file form `.xml` into `.json` format to fit the require when user want using [openvino_training_extensions](https://github.com/opencv/openvino_training_extensions) to train a SSD detector.
 
 ###### The data struct of `.json` file
@@ -114,6 +114,16 @@ The tag of `images` will describe the information of each training/ testing imag
 "width": 640                -> The width of this image
 ```
 
+###### Usage:
+```sh
+-i      -> the $ROOT_PATH of .xml file
+-o      -> The file name of output .json file
+```
+
+###### Run:
+```sh
+python xml2json.py -m $ROOT_PATH_OF_ALL_XML -d $OUTPUT_PATH_OF_JSON
+```
 
 
 
