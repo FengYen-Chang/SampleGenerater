@@ -1,5 +1,5 @@
 # SampleGenerater
-This project it for user to collect the image data via camera and transfer the annotation file form `.xml` format which generate by [LabelImg](https://github.com/tzutalin/labelImg) into `.json` format.
+This project it for users to collect the image data via camera and transfer the annotation file form `.xml` format which generate by [LabelImg](https://github.com/tzutalin/labelImg) into `.json` format.
 
 ### How to use
 In this repository, provide two application `capture.py` and `xml2json.py` for users. 
@@ -10,7 +10,7 @@ The `capture.py` can let user to using the webcam or ip-cam to collect to image 
 ###### Usage:
 ```sh
 -m      -> the mode of data collection, default is press C or c
--d      -> assign the device for capture image, default is ipcam
+-d      -> assign the device for capture image, default is ip-cam
 ```
 
 ###### Run:
@@ -85,7 +85,7 @@ The tag of `annotations` will describe the information of each object you select
     76.0                        -> The width of selected object.
 ],
 "category_id": 1,           -> The ID of category of this selected object which following the tag of categories
-"id": 0,                    -> The ID of this selected object (all object have different ID)
+"id": 0,                    -> The ID of this selected object (all objects have different ID)
 "image_id": 0,              -> The ID of image which have this selected object
 "is_occluded": false,       -> The selected object was occluded or not
 "iscrowd": 0,
@@ -100,7 +100,7 @@ The tag of `category` will describe the ID of each category.
 "supercategory": ""
 ```
 
-The tag of `images` will describe the information of each training/ testing image.
+The tag of `images` will describe the information about each training/ testing image.
 ```
 "coco_url": null,         
 "dataset": "globalme",
